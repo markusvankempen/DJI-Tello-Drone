@@ -1,0 +1,531 @@
+[
+    {
+        "id": "6d5d7ac0.30a7c4",
+        "type": "udp out",
+        "z": "ecd81ac.0812868",
+        "name": "",
+        "addr": "192.168.10.1",
+        "iface": "",
+        "port": "8889",
+        "ipv": "udp4",
+        "outport": "",
+        "base64": false,
+        "multicast": "false",
+        "x": 810,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "22f776b1.ef18b2",
+        "type": "inject",
+        "z": "ecd81ac.0812868",
+        "name": "land",
+        "topic": "",
+        "payload": "land",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 236.25,
+        "y": 158,
+        "wires": [
+            [
+                "6d5d7ac0.30a7c4"
+            ]
+        ]
+    },
+    {
+        "id": "1ee89fd3.c0aa88",
+        "type": "debug",
+        "z": "ecd81ac.0812868",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 765.25,
+        "y": 212.75,
+        "wires": []
+    },
+    {
+        "id": "69801851.db9858",
+        "type": "function",
+        "z": "ecd81ac.0812868",
+        "name": "Takeoff",
+        "func": "var message = new Buffer( 'command');\n/*\n\tclient.send(message, 0, message.length, PORT, HOST, function(err, bytes) {\n\t\t\t\tif (err) throw err;\t\n\t\t\t});\n*/\nmsg.payload = message\nnode.send(msg)\nmessage = new Buffer( 'takeoff');\nmsg.payload = message\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 406.5,
+        "y": 216.25,
+        "wires": [
+            [
+                "6d5d7ac0.30a7c4",
+                "1ee89fd3.c0aa88"
+            ]
+        ]
+    },
+    {
+        "id": "c9c3a3f7.762368",
+        "type": "inject",
+        "z": "ecd81ac.0812868",
+        "name": "takeoff",
+        "topic": "",
+        "payload": "takeoff",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 236.25,
+        "y": 218,
+        "wires": [
+            [
+                "69801851.db9858"
+            ]
+        ]
+    },
+    {
+        "id": "bfc541a9.e24a58",
+        "type": "function",
+        "z": "ecd81ac.0812868",
+        "name": "up60",
+        "func": "dis = 60\nvar message = new Buffer( 'up '+ dis );\nmsg.payload = \tmessage\t\t\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 395.5,
+        "y": 267.25,
+        "wires": [
+            [
+                "6d5d7ac0.30a7c4"
+            ]
+        ]
+    },
+    {
+        "id": "490905ce.8e2c34",
+        "type": "inject",
+        "z": "ecd81ac.0812868",
+        "name": "up60",
+        "topic": "",
+        "payload": "Up60",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 236.25,
+        "y": 278,
+        "wires": [
+            [
+                "bfc541a9.e24a58"
+            ]
+        ]
+    },
+    {
+        "id": "c287dd7d.5b2ba",
+        "type": "function",
+        "z": "ecd81ac.0812868",
+        "name": "down60",
+        "func": "dis = 60\nvar message = new Buffer( 'down '+ dis );\nmsg.payload = \tmessage\t\t\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 409.5,
+        "y": 319.25,
+        "wires": [
+            [
+                "6d5d7ac0.30a7c4"
+            ]
+        ]
+    },
+    {
+        "id": "e8a39dab.21fee8",
+        "type": "inject",
+        "z": "ecd81ac.0812868",
+        "name": "down60",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 236.25,
+        "y": 318,
+        "wires": [
+            [
+                "c287dd7d.5b2ba"
+            ]
+        ]
+    },
+    {
+        "id": "c8ec2c0c.f61818",
+        "type": "function",
+        "z": "ecd81ac.0812868",
+        "name": "right30",
+        "func": "dis = 30\nvar message = new Buffer( 'right '+ dis );\nmsg.payload = \tmessage\t\t\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 408.5,
+        "y": 378.25,
+        "wires": [
+            [
+                "6d5d7ac0.30a7c4"
+            ]
+        ]
+    },
+    {
+        "id": "7acdd57e.7f20ac",
+        "type": "inject",
+        "z": "ecd81ac.0812868",
+        "name": "right30",
+        "topic": "",
+        "payload": "right30",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 236.25,
+        "y": 378,
+        "wires": [
+            [
+                "c8ec2c0c.f61818"
+            ]
+        ]
+    },
+    {
+        "id": "389168da.378658",
+        "type": "function",
+        "z": "ecd81ac.0812868",
+        "name": "left30",
+        "func": "dis = 30\nvar message = new Buffer( 'left '+ dis );\nmsg.payload = \tmessage\t\t\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 396.25,
+        "y": 438,
+        "wires": [
+            [
+                "6d5d7ac0.30a7c4"
+            ]
+        ]
+    },
+    {
+        "id": "3cab11bd.a8edf6",
+        "type": "inject",
+        "z": "ecd81ac.0812868",
+        "name": "left30",
+        "topic": "",
+        "payload": "left30",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 236.25,
+        "y": 438,
+        "wires": [
+            [
+                "389168da.378658"
+            ]
+        ]
+    },
+    {
+        "id": "e90eaf8b.2acae",
+        "type": "function",
+        "z": "ecd81ac.0812868",
+        "name": "forward60",
+        "func": "dis = 60\nvar message = new Buffer( 'forward '+ dis );\nmsg.payload = \tmessage\t\t\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 420.5,
+        "y": 502.25,
+        "wires": [
+            [
+                "6d5d7ac0.30a7c4"
+            ]
+        ]
+    },
+    {
+        "id": "430829f0.f4301",
+        "type": "inject",
+        "z": "ecd81ac.0812868",
+        "name": "forward60",
+        "topic": "",
+        "payload": "Up60",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 226.25,
+        "y": 498,
+        "wires": [
+            [
+                "e90eaf8b.2acae"
+            ]
+        ]
+    },
+    {
+        "id": "2131c713.81",
+        "type": "function",
+        "z": "ecd81ac.0812868",
+        "name": "back60",
+        "func": "dis = 60\nvar message = new Buffer( 'back '+ dis );\nmsg.payload = \tmessage\t\t\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 424.5,
+        "y": 554.25,
+        "wires": [
+            [
+                "6d5d7ac0.30a7c4"
+            ]
+        ]
+    },
+    {
+        "id": "e5f3b7a4.a87f5",
+        "type": "inject",
+        "z": "ecd81ac.0812868",
+        "name": "back60",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 236.25,
+        "y": 558,
+        "wires": [
+            [
+                "2131c713.81"
+            ]
+        ]
+    },
+    {
+        "id": "d827f119.f984f",
+        "type": "function",
+        "z": "ecd81ac.0812868",
+        "name": "cw30",
+        "func": "dis = 30\nvar message = new Buffer( 'cw '+ dis );\nmsg.payload = \tmessage\t\t\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 419.5,
+        "y": 610.25,
+        "wires": [
+            [
+                "c0c4d190.38081"
+            ]
+        ]
+    },
+    {
+        "id": "739850ea.ae0988",
+        "type": "inject",
+        "z": "ecd81ac.0812868",
+        "name": "cw30",
+        "topic": "",
+        "payload": "cw360",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 236.25,
+        "y": 618,
+        "wires": [
+            [
+                "d827f119.f984f"
+            ]
+        ]
+    },
+    {
+        "id": "59226d48.4e83c4",
+        "type": "function",
+        "z": "ecd81ac.0812868",
+        "name": "ccw360",
+        "func": "dis = 360\nvar message = new Buffer( 'ccw '+ dis );\nmsg.payload = \tmessage\t\t\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 442.5,
+        "y": 744.25,
+        "wires": [
+            [
+                "c0c4d190.38081"
+            ]
+        ]
+    },
+    {
+        "id": "9c216386.263be",
+        "type": "inject",
+        "z": "ecd81ac.0812868",
+        "name": "Full360",
+        "topic": "",
+        "payload": "cw30",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 238.25,
+        "y": 740,
+        "wires": [
+            [
+                "59226d48.4e83c4"
+            ]
+        ]
+    },
+    {
+        "id": "85026bac.12adc8",
+        "type": "function",
+        "z": "ecd81ac.0812868",
+        "name": "flip",
+        "func": "dis = 'f'\nvar message = new Buffer( 'flip '+ dis );\nmsg.payload = \tmessage\t\t\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 423.25,
+        "y": 795.5,
+        "wires": [
+            [
+                "c0c4d190.38081"
+            ]
+        ]
+    },
+    {
+        "id": "9f7c45a8.41f21",
+        "type": "inject",
+        "z": "ecd81ac.0812868",
+        "name": "flipforward",
+        "topic": "",
+        "payload": "cw30",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 239,
+        "y": 791.25,
+        "wires": [
+            [
+                "85026bac.12adc8"
+            ]
+        ]
+    },
+    {
+        "id": "84f28c0.edbc4f8",
+        "type": "function",
+        "z": "ecd81ac.0812868",
+        "name": "battery?",
+        "func": "dis = '?'\nvar message = new Buffer( 'battery'+ dis );\nmsg.payload = \tmessage\t\t\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 431.75,
+        "y": 902.75,
+        "wires": [
+            [
+                "c0c4d190.38081"
+            ]
+        ]
+    },
+    {
+        "id": "f71e1e90.52165",
+        "type": "inject",
+        "z": "ecd81ac.0812868",
+        "name": "Battery?",
+        "topic": "",
+        "payload": "cw30",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 247.5,
+        "y": 899.5,
+        "wires": [
+            [
+                "84f28c0.edbc4f8"
+            ]
+        ]
+    },
+    {
+        "id": "3fbf185b.ac8398",
+        "type": "function",
+        "z": "ecd81ac.0812868",
+        "name": "ccw30",
+        "func": "dis = 30\nvar message = new Buffer( 'ccw '+ dis );\nmsg.payload = \tmessage\t\t\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 432.5,
+        "y": 678,
+        "wires": [
+            [
+                "c0c4d190.38081"
+            ]
+        ]
+    },
+    {
+        "id": "8ed35fd.071ad2",
+        "type": "inject",
+        "z": "ecd81ac.0812868",
+        "name": "ccw30",
+        "topic": "",
+        "payload": "cw30",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 238.25,
+        "y": 673.75,
+        "wires": [
+            [
+                "3fbf185b.ac8398"
+            ]
+        ]
+    },
+    {
+        "id": "c0c4d190.38081",
+        "type": "function",
+        "z": "ecd81ac.0812868",
+        "name": "",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 683.125,
+        "y": 625.5,
+        "wires": [
+            [
+                "6d5d7ac0.30a7c4"
+            ]
+        ]
+    },
+    {
+        "id": "259eb2b7.b559ae",
+        "type": "function",
+        "z": "ecd81ac.0812868",
+        "name": "setspeed30",
+        "func": "dis = 30\nvar message = new Buffer( 'setspeed '+ dis );\nmsg.payload = \tmessage\t\t\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 438.25,
+        "y": 836,
+        "wires": [
+            [
+                "c0c4d190.38081"
+            ]
+        ]
+    },
+    {
+        "id": "d9b221cc.a2056",
+        "type": "inject",
+        "z": "ecd81ac.0812868",
+        "name": "setspeed",
+        "topic": "",
+        "payload": "setspeed",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 234,
+        "y": 831.75,
+        "wires": [
+            [
+                "259eb2b7.b559ae"
+            ]
+        ]
+    },
+    {
+        "id": "30ca76db.c473b2",
+        "type": "comment",
+        "z": "ecd81ac.0812868",
+        "name": "Information on Tello",
+        "info": "Connect to Tello-#WIFI#\nTello has the ip address 192.168.10.1\nand multipe udp ports for communication\nPort 8889 is for control flight command \nand status updates\nPort 6037 is the video port to get the video\n- Markus  - mvk@ca.ibm.com\nhttps://github.com/markusvankempen/\n",
+        "x": 300,
+        "y": 80,
+        "wires": []
+    }
+]
